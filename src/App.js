@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Quote from "./components/Quote";
 import styled from "styled-components";
 
@@ -32,40 +32,26 @@ const Button = styled.button`
 `;
 
 function App() {
-
- // quote state
- const [quote, setQuote] = useState({});
-
-
-
-
-
-
-
+  // quote state
+  const [quote, setQuote] = useState({});
 
   const fetchAPI = async () => {
-    const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
-    const quote = await api.json()
+    const api = await fetch(
+      "https://breaking-bad-quotes.herokuapp.com/v1/quotes"
+    );
+    const quote = await api.json();
     setQuote(quote[0]);
-  }
+  };
 
-// loading a Quote
+  // loading a Quote
 
-useEffect(()=> {
-fetchAPI()
-
-},[]);
-
-
-
+  useEffect(() => {
+    fetchAPI();
+  }, []);
 
   return (
     <Container>
-      <Quote
-       quote={quote}
-      />
-
-
+      <Quote quote={quote} />
 
       <Button onClick={fetchAPI}>Get Quote</Button>
     </Container>
